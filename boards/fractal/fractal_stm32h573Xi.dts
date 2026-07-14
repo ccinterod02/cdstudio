@@ -1,0 +1,52 @@
+/*
+ * Copyright (c) 2026 cdstudio
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+/dts-v1/;
+#include <st/h5/stm32h573Xi.dtsi>
+
+/ {
+	model = "cdstudio fractal (STM32H573)";
+	compatible = "st,stm32h573xi-cdstudio-fractal";
+
+	chosen {
+		zephyr,sram = &sram1;
+		zephyr,flash = &flash0;
+		zephyr,console = &usart3;
+		zephyr,shell-uart = &usart3;
+	};
+
+	leds: leds {
+		compatible = "gpio-leds";
+
+		led_status: led_0 {
+			gpios = <&gpiob 0 GPIO_ACTIVE_HIGH>;
+			label = "Status LED";
+		};
+
+		led_error: led_1 {
+			gpios = <&gpiob 1 GPIO_ACTIVE_HIGH>;
+			label = "Error LED";
+		};
+	};
+
+	aliases {
+		led0 = &led_status;
+		led1 = &led_error;
+	};
+};
+
+&usart3 {
+	pinctrl-0 = <&usart3_tx_pd8 &usart3_rx_pd9>;
+	pinctrl-names = "default";
+	status = "okay";
+};
+
+&rcc {
+	clocks = <&rcc STM32_CLOCK_BUS_APB1 0x100>, <&rcc STM32_D3CCIP RCC_D3CCIP_RNG>;
+};
+
+&rng {
+	status = "okay";
+};

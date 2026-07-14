@@ -1,0 +1,16 @@
+identifier: snake/esp32c6/hpcore
+name: cdstudio Snake HP Core
+vendor: cdstudio
+type: mcu
+arch: riscv
+toolchain:
+  - zephyr
+supported:
+  - adc
+  - gpio
+  - watchdog
+  - uart
+  - i2c
+  - netif:openthread
+  - crypto
+  - sensor

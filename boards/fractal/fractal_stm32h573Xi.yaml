@@ -1,0 +1,13 @@
+identifier: fractal/stm32h573/xi
+name: cdstudio Fractal STM32H573XI
+vendor: cdstudio
+type: mcu
+arch: arm
+toolchain:
+  - zephyr
+ram: 640
+flash: 2048
+supported:
+  - gpio
+  - uart
+  - entropy

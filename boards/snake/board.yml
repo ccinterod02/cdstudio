@@ -1,0 +1,6 @@
+board:
+  name: snake
+  full_name: cdstudio Snake
+  vendor: cdstudio
+  socs:
+  - name: esp32c6

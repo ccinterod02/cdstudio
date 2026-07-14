@@ -1,0 +1,6 @@
+board:
+  name: fractal
+  full_name: cdstudio Fractal
+  vendor: cdstudio
+  socs:
+    - name: stm32h573xx
