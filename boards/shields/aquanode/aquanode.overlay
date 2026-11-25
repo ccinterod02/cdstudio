@@ -1,0 +1,130 @@
+#include <zephyr/dt-bindings/adc/adc.h>
+#include <zephyr/dt-bindings/gpio/gpio.h>
+
+/ {
+	aquanode_channels: aquanode-channels {
+		compatible = "cdstudio,aquanode-channels";
+		#address-cells = <1>;
+		#size-cells = <0>;
+
+		channel@1 {
+			reg = <1>;
+			valve-gpios = <&xiao_d 3 GPIO_ACTIVE_HIGH>;
+			io-channels = <&aquanode_adc 0>, <&aquanode_adc 3>;
+			io-channel-names = "valve-detect", "soil-moisture";
+		};
+
+		channel@2 {
+			reg = <2>;
+			valve-gpios = <&xiao_d 2 GPIO_ACTIVE_HIGH>;
+			io-channels = <&aquanode_adc 1>, <&aquanode_adc 2>;
+			io-channel-names = "valve-detect", "soil-moisture";
+		};
+
+		channel@3 {
+			reg = <3>;
+			valve-gpios = <&xiao_d 7 GPIO_ACTIVE_HIGH>;
+			io-channels = <&aquanode_adc 7>, <&aquanode_adc 5>;
+			io-channel-names = "valve-detect", "soil-moisture";
+		};
+
+		channel@4 {
+			reg = <4>;
+			valve-gpios = <&xiao_d 8 GPIO_ACTIVE_HIGH>;
+			io-channels = <&aquanode_adc 6>, <&aquanode_adc 4>;
+			io-channel-names = "valve-detect", "soil-moisture";
+		};
+	};
+};
+
+&xiao_i2c {
+	status = "okay";
+
+	aquanode_tla2528: tla2528@10 {
+		compatible = "ti,tla2528";
+		reg = <0x10>;
+
+		aquanode_adc: adc {
+			compatible = "ti,tla2528-adc";
+			#io-channel-cells = <1>;
+			#address-cells = <1>;
+			#size-cells = <0>;
+
+			channel@0 {
+				reg = <0>;
+				zephyr,gain = "ADC_GAIN_1";
+				zephyr,reference = "ADC_REF_EXTERNAL0";
+				zephyr,vref-mv = <5000>;
+				zephyr,acquisition-time = <ADC_ACQ_TIME_DEFAULT>;
+				zephyr,resolution = <12>;
+			};
+
+			channel@1 {
+				reg = <1>;
+				zephyr,gain = "ADC_GAIN_1";
+				zephyr,reference = "ADC_REF_EXTERNAL0";
+				zephyr,vref-mv = <5000>;
+				zephyr,acquisition-time = <ADC_ACQ_TIME_DEFAULT>;
+				zephyr,resolution = <12>;
+			};
+
+			channel@2 {
+				reg = <2>;
+				zephyr,gain = "ADC_GAIN_1";
+				zephyr,reference = "ADC_REF_EXTERNAL0";
+				zephyr,vref-mv = <5000>;
+				zephyr,acquisition-time = <ADC_ACQ_TIME_DEFAULT>;
+				zephyr,resolution = <12>;
+			};
+
+			channel@3 {
+				reg = <3>;
+				zephyr,gain = "ADC_GAIN_1";
+				zephyr,reference = "ADC_REF_EXTERNAL0";
+				zephyr,vref-mv = <5000>;
+				zephyr,acquisition-time = <ADC_ACQ_TIME_DEFAULT>;
+				zephyr,resolution = <12>;
+			};
+
+			channel@4 {
+				reg = <4>;
+				zephyr,gain = "ADC_GAIN_1";
+				zephyr,reference = "ADC_REF_EXTERNAL0";
+				zephyr,vref-mv = <5000>;
+				zephyr,acquisition-time = <ADC_ACQ_TIME_DEFAULT>;
+				zephyr,resolution = <12>;
+			};
+
+			channel@5 {
+				reg = <5>;
+				zephyr,gain = "ADC_GAIN_1";
+				zephyr,reference = "ADC_REF_EXTERNAL0";
+				zephyr,vref-mv = <5000>;
+				zephyr,acquisition-time = <ADC_ACQ_TIME_DEFAULT>;
+				zephyr,resolution = <12>;
+			};
+
+			channel@6 {
+				reg = <6>;
+				zephyr,gain = "ADC_GAIN_1";
+				zephyr,reference = "ADC_REF_EXTERNAL0";
+				zephyr,vref-mv = <5000>;
+				zephyr,acquisition-time = <ADC_ACQ_TIME_DEFAULT>;
+				zephyr,resolution = <12>;
+			};
+
+			channel@7 {
+				reg = <7>;
+				zephyr,gain = "ADC_GAIN_1";
+				zephyr,reference = "ADC_REF_EXTERNAL0";
+				zephyr,vref-mv = <5000>;
+				zephyr,acquisition-time = <ADC_ACQ_TIME_DEFAULT>;
+				zephyr,resolution = <12>;
+			};
+		};
+	};
+};
+
+&xiao_serial {
+	status = "disabled";
+};

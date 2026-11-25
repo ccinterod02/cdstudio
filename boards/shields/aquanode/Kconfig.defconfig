@@ -1,0 +1,15 @@
+if SHIELD_AQUANODE
+
+config GPIO
+	default y
+
+config I2C
+	default y
+
+config MFD
+	default y
+
+config ADC
+	default y
+
+endif

@@ -1,0 +1,31 @@
+description: Irrigation channels of the aquanode carrier board, one child node per channel
+
+compatible: "cdstudio,aquanode-channels"
+
+properties:
+  "#address-cells":
+    type: int
+    const: 1
+  "#size-cells":
+    type: int
+    const: 0
+
+child-binding:
+  description: Irrigation channel numbered by its reg, with its valve output and its two analog inputs
+
+  properties:
+    reg:
+      type: int
+      required: true
+
+    valve-gpios:
+      type: phandle-array
+      required: true
+
+    io-channels:
+      type: phandle-array
+      required: true
+
+    io-channel-names:
+      type: string-array
+      required: true
